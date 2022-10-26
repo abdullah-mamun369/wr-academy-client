@@ -1,24 +1,29 @@
 import React from 'react';
+import { Link, useLoaderData } from 'react-router-dom';
+import Card from './Card/Card';
 import './Courses.css';
 
 const Courses = () => {
+
+    const courses = useLoaderData();
+
+
+
     return (
         <div className=''>
             <div className='grid grid-cols-4 gap-4 sidebar-container'>
-                <div className='bg-slate-500 h-full'>Mamun</div>
-                <div className='col-span-3 grid grid-cols-3 gap-4'>
-                    <div className='col-span-1'>
-                        <div className="card card-compact w-96 bg-base-100 shadow-xl">
-                            <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-                            <div className="card-body">
-                                <h2 className="card-title">Shoes!</h2>
-                                <p>If a dog chews shoes whose shoes does he choose?</p>
-                                <div className="card-actions justify-end">
-                                    <button className="btn btn-primary">Buy Now</button>
-                                </div>
-                            </div>
-                        </div>
+                <div className='bg-slate-500 h-full'>
+                    {
+                        courses.map(course => <Link to={`/course/${course.id}`} key={course.id}><p>{course.title}</p></Link>)
+                    }
+                </div>
+                <div className='col-span-3'>
+                    <div className='grid grid-cols-3 gap-4'>
+                        {
+                            courses.map(course => <Card key={course.id} course={course}></Card>)
+                        }
                     </div>
+
 
                 </div>
             </div>

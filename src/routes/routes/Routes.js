@@ -20,13 +20,16 @@ export const router = createBrowserRouter([
 
             {
                 path: "/courses",
-                element: <Courses></Courses>
+                loader: async () => {
+                    return fetch('http://localhost:5000/allcourses');
+                },
+                element: <Courses></Courses>,
             },
 
             {
-                path: "/course",
-                loader: async () => {
-                    return fetch('http://localhost:5000/allcourses');
+                path: "/course/:id",
+                loader: async ({ params }) => {
+                    return fetch(`http://localhost:5000/courses/${params.id}`);
                 },
                 element: <Course></Course>
             },

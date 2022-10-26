@@ -17,9 +17,16 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to="/login" className="mx-5 py-1.5 px-4 border transition duration-180 ease-out md:ease-in border-amber-500 text-amber-500 hover:bg-amber-500 rounded-md hover:text-white">Log In</Link>
+                    <Link to="/login" className="mx-5 btn btn-outline btn-primary">Log In</Link>
 
-                    <Link to="/signup" className="py-1.5 px-4 border transition duration-180 ease-out md:ease-in border-amber-500 text-amber-500 hover:bg-amber-500 rounded-md hover:text-white">Sign Up</Link>
+                    <Link to="/signup" className="mx-5 btn btn-outline btn-primary">Sign Up</Link>
+
+                    <div className="form-control">
+                        <label className="label cursor-pointer">
+                            <span className="label-text">Remember me</span>
+                            <input type="checkbox" className="toggle toggle-primary" checked />
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
