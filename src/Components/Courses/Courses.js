@@ -10,21 +10,21 @@ const Courses = () => {
 
 
     return (
-        <div className=''>
+        <div className='px-5'>
             <div className='grid grid-cols-4 gap-4 sidebar-container'>
-                <div className='bg-slate-500 h-full'>
-                    {
-                        courses.map(course => <Link to={`/course/${course.id}`} key={course.id}><p>{course.title}</p></Link>)
-                    }
-                </div>
                 <div className='col-span-3'>
                     <div className='grid grid-cols-3 gap-4'>
                         {
                             courses.map(course => <Card key={course.id} course={course}></Card>)
                         }
                     </div>
-
-
+                </div>
+                <div className='bg-base-100 shadow-2xl h-full mb-5'>
+                    {
+                        courses.map(course => <Link className='text-center' to={`/course/${course.id}`} key={course.id}>
+                            <p className='py-5 border-b-2'>{course.title}</p>
+                        </Link>)
+                    }
                 </div>
             </div>
         </div>
