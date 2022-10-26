@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/UserContext';
 
 const Header = () => {
+    const { user } = useContext(AuthContext);
+    console.log('context', user);
     return (
         <div className='container'>
             <div className="navbar bg-base-100 drop-shadow-md">
@@ -22,9 +25,9 @@ const Header = () => {
                     <Link to="/signup" className="mx-5 btn btn-outline btn-primary">Sign Up</Link>
 
                     <div className="form-control">
-                        <label className="label cursor-pointer">
-                            <span className="label-text">Remember me</span>
-                            <input type="checkbox" className="toggle toggle-primary" checked />
+                        <label className="cursor-pointer">
+                            <span className="label-text">Dark Mode</span>
+                            <input type="checkbox" className="toggle" />
                         </label>
                     </div>
                 </div>
