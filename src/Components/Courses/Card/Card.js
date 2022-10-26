@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Card = ({ course }) => {
-    const { image, title, mentor, classes, seats } = course;
+    const { id, image, title, mentor, classes, seats } = course;
     console.log(image, title, mentor, classes, seats);
     return (
         <div className='col-span-1'>
@@ -12,8 +13,10 @@ const Card = ({ course }) => {
                     <p>Mentor: <span className='text-primary'>{mentor}</span></p>
                     <p>Classes: <span className='font-bold'>{classes}</span></p>
                     <p>Available Seats: <span className='font-bold'>{seats}</span></p>
-                    <div className="card-actions">
-                        <button className="btn btn-primary w-full">Details</button>
+                    <div>
+                        <Link className="card-actions" to={`/course/${id}`}>
+                            <button className="btn btn-primary w-full">Details</button>
+                        </Link>
                     </div>
                 </div>
             </div>
