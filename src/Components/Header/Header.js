@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
+import { FaUserAlt } from 'react-icons/fa';
 
 const Header = () => {
     const { user } = useContext(AuthContext);
-    console.log('context', user);
+
     return (
         <div className='container'>
             <div className="navbar bg-base-100 drop-shadow-md">
@@ -29,6 +30,12 @@ const Header = () => {
                             <span className="label-text">Dark Mode</span>
                             <input type="checkbox" className="toggle" />
                         </label>
+                    </div>
+                    <div className="w-10 rounded-full">
+                        {user.photoURL ?
+                            <img src={user.photoURL} alt='' />
+                            : <FaUserAlt />
+                        }
                     </div>
                 </div>
             </div>

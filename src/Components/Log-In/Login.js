@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../contexts/UserContext';
+import { BsGoogle, BsGithub } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
+
+    const { signIn } = useContext(AuthContext);
+
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error))
+
     }
 
     return (
@@ -36,6 +50,18 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">LOGIN</button>
                             </div>
+                            <div className="form-control mt-6">
+                                <div className="form-control mt-6">
+                                    <button className="btn btn-outline"> <span className='mx-2'> <BsGoogle /></span> Login with Google</button>
+                                </div>
+                                <div className="form-control mt-6">
+                                    <button className="btn btn-outline"> <span className='mx-2'> <BsGithub /></span> Login with GitHub</button>
+                                </div>
+                                <div className='mt-2'>
+                                    <p><small>Don't have an account? <Link className='text-cyan-700 font-medium' to="/register"> Register here</Link></small></p>
+                                </div>
+                            </div>
+
                         </form>
                     </div>
                 </div>
