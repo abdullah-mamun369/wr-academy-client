@@ -4,6 +4,9 @@ import Home from "../../Components/Home/Home";
 import Courses from "../../Components/Courses/Courses"
 import Course from "../../Components/Course/Course"
 import Faq from "../../Components/FAQ/Faq"
+import Blogs from "../../Components/Blogs/Blogs";
+import Login from "../../Components/Log-In/Login";
+import SignUp from "../../Components/Sign-Up/SignUp";
 
 export const router = createBrowserRouter([
     {
@@ -22,12 +25,30 @@ export const router = createBrowserRouter([
 
             {
                 path: "/course",
+                loader: async () => {
+                    return fetch('http://localhost:5000/allcourses');
+                },
                 element: <Course></Course>
+            },
+
+            {
+                path: "/blogs",
+                element: <Blogs></Blogs>
             },
 
             {
                 path: "/faq",
                 element: <Faq></Faq>
+            },
+
+            {
+                path: "/login",
+                element: <Login></Login>
+            },
+
+            {
+                path: "/signup",
+                element: <SignUp></SignUp>
             }
         ]
     }
