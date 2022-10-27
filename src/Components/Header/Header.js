@@ -26,11 +26,12 @@ const Header = () => {
                                 <li><Link to="/courses">Courses</Link></li>
                                 <li><Link to="/faq">FAQ</Link></li>
                                 <li><Link to="/blogs">Blogs</Link></li>
-                                <Link to="/login" className="btn btn-outline btn-primary mr-2 ">Login</Link>
-                                <Link to="/register" className="btn btn-outline btn-primary">Register</Link>
+                                <li><Link to="/login" className='text-primary'>Login</Link></li>
+                                <li><Link to="/register" className='text-primary'>Register</Link></li>
+
                             </ul>
                         </div>
-                        <Link className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+                        <Link to='/' className="btn btn-ghost normal-case text-xl"><span className='text-2xl font-bold text-primary'>WR Academy</span></Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal p-0">
@@ -38,6 +39,7 @@ const Header = () => {
                             <li><Link to="/courses">Courses</Link></li>
                             <li><Link to="/faq">FAQ</Link></li>
                             <li><Link to="/blogs">Blogs</Link></li>
+
                         </ul>
                     </div>
 
@@ -68,7 +70,8 @@ const Header = () => {
                                                     <li className='mr-2 text-sm font-medium text-center'>{user?.displayName}</li>
                                                     : <li>
                                                         <Link className="justify-between">
-                                                            {user?.email.slice(0, -10)}
+                                                            {/* {user?.email.slice(0, -10)} */}
+                                                            {user?.email}
                                                         </Link>
                                                     </li>
                                             }
@@ -79,9 +82,9 @@ const Header = () => {
                                     </div>
                                 </>
                                 :
-                                <div>
+                                <div className='hidden lg:flex'>
                                     <Link to="/login" className="btn btn-outline btn-primary mr-2">Login</Link>
-                                    <Link to="/register" className="btn btn-outline btn-primary">Register</Link>
+                                    <Link to="/signup" className="btn btn-outline btn-primary">Signup</Link>
                                 </div>
                         }
                     </div>
