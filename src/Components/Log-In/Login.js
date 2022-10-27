@@ -51,14 +51,15 @@ const Login = () => {
                                 <button className="btn btn-primary">LOGIN</button>
                             </div>
                             <div className="form-control mt-6">
-                                <div className="form-control mt-6">
+                                <p className='text-center'>Login with</p>
+                                <div className="form-control mt-2">
                                     <button className="btn btn-outline"> <span className='mx-2'> <BsGoogle /></span> Login with Google</button>
                                 </div>
-                                <div className="form-control mt-6">
+                                <div className="form-control mt-3">
                                     <button className="btn btn-outline"> <span className='mx-2'> <BsGithub /></span> Login with GitHub</button>
                                 </div>
                                 <div className='mt-2'>
-                                    <p><small>Don't have an account? <Link className='text-cyan-700 font-medium' to="/register"> Register here</Link></small></p>
+                                    <p><small>Don't have an account? <Link className='text-cyan-700 font-medium' to="/signup"> Register here</Link></small></p>
                                 </div>
                             </div>
 

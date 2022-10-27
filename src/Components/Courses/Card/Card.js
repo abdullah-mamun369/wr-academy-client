@@ -7,7 +7,7 @@ const Card = ({ course }) => {
     return (
         <div className='col-span-1'>
             <div className="card card-compact w-full bg-base-100 shadow-xl mt-5">
-                <figure><img src={image} alt="Shoes" /></figure>
+                <figure ><img className='w-full' src={image} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="text-base font-bold">{title}</h2>
                     <p>Mentor: <span className='text-primary'>{mentor}</span></p>
