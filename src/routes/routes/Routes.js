@@ -7,6 +7,8 @@ import Faq from "../../Components/FAQ/Faq"
 import Blogs from "../../Components/Blogs/Blogs";
 import Login from "../../Components/Log-In/Login";
 import SignUp from "../../Components/Sign-Up/SignUp";
+import Checkout from "../../Components/Checkout/Checkout";
+import PrivateRoute from "../private-routes/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -52,6 +54,14 @@ export const router = createBrowserRouter([
             {
                 path: "/signup",
                 element: <SignUp></SignUp>
+            },
+
+            {
+                path: "/checkout/:id",
+                loader: async ({ params }) => {
+                    return fetch(`http://localhost:5000/courses/${params.id}`);
+                },
+                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
             }
         ]
     }
