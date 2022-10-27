@@ -5,10 +5,10 @@ import { AuthContext } from '../../contexts/UserContext';
 
 const PrivateRoute = ({ children }) => {
 
-    const { user, isLoading } = useContext(AuthContext);
+    const { user, spinner } = useContext(AuthContext);
     const location = useLocation();
 
-    if (isLoading) {
+    if (spinner) {
         return <Spinner></Spinner>
     }
 

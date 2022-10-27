@@ -1,3 +1,49 @@
+<!-- About The Website -->
+
+# Live Link
+
+WR Academy
+
+# Name
+
+WR Academy
+
+# Technology
+
+1.React
+2.Tailwind
+3.Daizy UI for component
+4.Firebase authentication
+
+# Type of the website
+
+This is a skill development organization's website
+
+# About WR Academy
+
+Here you ca get all type of skill development consultation.
+
+We provide 
+
+1.Grapgic Design
+2.Mostion Graphic
+3.Digital Marketing
+4.Web Development
+
+skill development course.
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

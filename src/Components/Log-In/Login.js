@@ -1,10 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/UserContext';
 import { BsGoogle, BsGithub } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
+
+    const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const loaction = useLocation();
+
+    const from = loaction.state?.from?.pathname || '/';
+
 
     const { signIn, providerLogin } = useContext(AuthContext);
 
@@ -14,10 +21,12 @@ const Login = () => {
     const handleGithubSignIn = () => {
         providerLogin(githubProvider)
             .then(result => {
-                const user = result.user;
-                console.log(user);
+                navigate(from, { replace: true })
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error);
+                setError(error.message)
+            })
     }
 
     // login with google handle
@@ -26,10 +35,12 @@ const Login = () => {
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
-                const user = result.user;
-                console.log(user);
+                navigate(from, { replace: true })
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error);
+                setError(error.message)
+            })
     }
 
     // email and password handle
@@ -38,14 +49,17 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+
 
         signIn(email, password)
             .then(result => {
-                const user = result.user;
-                console.log(user);
+                navigate(from, { replace: true })
+
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error);
+                setError(error.message)
+            })
 
     }
 
@@ -73,6 +87,11 @@ const Login = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
+                            {
+                                error && <>
+                                    <p className='text-center text-red-600'>{error}</p>
+                                </>
+                            }
                             <div className="form-control mt-6">
                                 <button className="btn btn-primary">LOGIN</button>
                             </div>

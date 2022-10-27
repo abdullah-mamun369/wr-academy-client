@@ -11,6 +11,8 @@ const UserContext = ({ children }) => {
 
     const [user, setUser] = useState(null);
 
+    const [spinner, setSpinner] = useState(true);
+
     // Signin with github
 
 
@@ -22,21 +24,24 @@ const UserContext = ({ children }) => {
 
     // Sign In with gmail and password
     const createUser = (email, password) => {
+        setSpinner(true)
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const signIn = (email, password) => {
+        setSpinner(true)
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     const logOut = () => {
+        setSpinner(true)
         return signOut(auth);
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            console.log('auth state changed', currentUser);
+            setSpinner(false);
         })
 
         return () => {
@@ -45,7 +50,7 @@ const UserContext = ({ children }) => {
     }, [])
 
 
-    const authInfo = { user, createUser, signIn, logOut, providerLogin };
+    const authInfo = { user, spinner, createUser, signIn, logOut, providerLogin };
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

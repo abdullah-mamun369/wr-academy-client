@@ -9,6 +9,7 @@ import Login from "../../Components/Log-In/Login";
 import SignUp from "../../Components/Sign-Up/SignUp";
 import Checkout from "../../Components/Checkout/Checkout";
 import PrivateRoute from "../private-routes/PrivateRoute";
+import error404 from "../../Components/images/error.png"
 
 export const router = createBrowserRouter([
     {
@@ -62,7 +63,23 @@ export const router = createBrowserRouter([
                     return fetch(`http://localhost:5000/courses/${params.id}`);
                 },
                 element: <PrivateRoute><Checkout></Checkout></PrivateRoute>
-            }
+            },
+
+
         ]
+
+
+    },
+    {
+        path: '*',
+        element: <div className='vh-100 d-flex flex-column justify-content-center align-items-center'>
+            <div className="App">
+                <header className="App-header">
+                    <h1 className='error-text text-center text-success mb-5'>404 Error</h1>
+                    <img src={error404} className="App-logo" alt="" />
+                    <h2 className='text-secondary'>Please type a right address...</h2>
+                </header>
+            </div>
+        </div>
     }
 ])
