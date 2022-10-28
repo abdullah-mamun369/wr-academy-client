@@ -2,9 +2,17 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 import { FaUserAlt } from 'react-icons/fa';
+import { useState } from 'react';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+
+    const [toggleButton, setToggleButton] = useState();
+
+    const toggleChange = event => {
+        const toggleButton = event.target.checked;
+        setToggleButton(toggleButton)
+    }
 
     const handleSignOut = () => {
         logOut()
@@ -27,11 +35,13 @@ const Header = () => {
                                 <li><Link to="/faq">FAQ</Link></li>
                                 <li><Link to="/blogs">Blogs</Link></li>
                                 <li><Link to="/login" className='text-primary'>Login</Link></li>
-                                <li><Link to="/register" className='text-primary'>Register</Link></li>
+                                <li><Link to="/signup" className='text-primary'>Signup</Link></li>
 
                             </ul>
                         </div>
-                        <Link to='/' className="btn btn-ghost normal-case text-xl"><span className='text-2xl font-bold text-primary'>WR Academy</span></Link>
+                        <Link to='/' className="btn btn-ghost normal-case text-xl">
+                            <img src="https://i.postimg.cc/qvRZhKBS/favicon.png" className="h-8 w-8 mr-4" />
+                            <span className='lg:text-2xl font-bold text-primary'>WR</span> <span className='hidden lg:grid lg:text-2xl font-bold ml-3'>Academy</span> </Link>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal p-0">
@@ -45,8 +55,12 @@ const Header = () => {
 
                     <div className="form-control navbar-end">
                         <label className="label cursor-pointer">
-                            <span className="label-text text-sm mr-3 opacity-60 sm:ghost">Dark Mode</span>
-                            <input type="checkbox" className="toggle toggle-primary" />
+                            <span className="label-text text-sm mr-3 opacity-60 sm:ghost">
+                                {
+                                    toggleButton ? 'Dark' : 'Light'
+                                }
+                            </span>
+                            <input onChange={toggleChange} type="checkbox" className="toggle toggle-primary" />
                         </label>
                     </div>
 
