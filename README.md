@@ -2,7 +2,7 @@
 
 # Live Link
 
-WR Academy
+https://assignment-ph-10.web.app/
 
 # Name
 
