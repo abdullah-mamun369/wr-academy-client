@@ -2,7 +2,7 @@
 
 # Live Link
 
-https://assignment-ph-10.web.app/
+[https://assignment-ph-10.web.app/](https://wr-academy-by-mamun.netlify.app/)
 
 # Name
 
